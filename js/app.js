@@ -101,7 +101,7 @@ class albums {
 
     loadCards(arr) { 
         this row.innerHTML = ''
-        arr.forEach(item => this.builditem(item))  
+        arr.forEach(item => this.buildItem(item))  
     }
     
     toggleFavorite(el,arr) { 
