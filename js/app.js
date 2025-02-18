@@ -23,7 +23,7 @@ class albums {
             {
                 artist: 'Cece Winans',
                 title: 'Believe For It',
-                genre: 'Christian',
+                genre: 'Inspirational',
                 albumRecorded: '2020',
                 albumReleased: '2021',
                 label: 'Puresprings Gospel',
@@ -41,7 +41,7 @@ class albums {
             {
                 artist: 'Lathan Warlick',
                 title: "Lets Be Honest",
-                genre: 'Gospel/Christian',
+                genre: 'Gospel/Christian Rap',
                 albumRecorded: '2022',
                 albumReleased: '2022',
                 label: 'Columbia Records',
@@ -50,7 +50,7 @@ class albums {
             {
                 artist: 'Lecrae',
                 title: 'Anomaly',
-                genre: 'Christian Rap',
+                genre: 'Gospel/Christian Rap',
                 albumRecorded: '2013-2014',
                 albumRelease: '2014',
                 label: 'Reach Records',
@@ -100,32 +100,72 @@ class albums {
     }
 
     loadCards(arr) { 
-        this row.innerHTMl = ''
+        this row.innerHTML = ''
         arr.forEach(item => this.builditem(item))  
     }
     
-    toggleFavorites(el,arr) { 
+    toggleFavorite(el,arr) { 
         for (let of arr) {
             if(el.id == item.id) {
                 item.isFavorite = !item.isFavorite
                 el.innerText = item.isFavorite ?
                 'unfavorite' : ' favorite'
+                
+                forEach( => {
+                    
+                }
             }
         }
     }
 
-    filter(el) {t
+    filter(el) {
         const filter = el.getAtttribute('data-sort') 
 
         let copy
         if(filter == 'genre') {
             const genre = document.getElementById('genreSelect').value
-            copy = this.data.filter(item)
+            copy = this.data.filter(item => Object.values(item.genre).includes(genre))
+        } else {
+            const artist = document.getElementById('artistSelect').value
+            copy = this.data.filter(item =>item.artist == )
+        }
+        //console.log(copy)
+        this.loadCards(copy)
         }
     }
 
+    const action = new albums()
 
+    action.init()
 
+    const buttons = document.querySelectorAll('favoriteBtns')
+
+    buttons.forEach(button => {
+        button.addEventListener('click', ()=> {
+            action.toggleFavorite(button, action.data)
+        })
+    })
+    
+    const genreBtn = document.getElementById('genreBtn')
+    
+    genreBtn.addEventListener('click', ()=>  {
+        e.preventDefault()
+        //console.log('clicked');
+        action.filter(genreBtnBtn)
+    
+    })
+    const artistBtn = document.getElementById('artistBtn')
+    
+    artistBtn.addEventListener('click', (e)=> {
+        e.preventDefault()
+        action.filter(artistBtn)
+    })
+    
+    
+    const sortBtns = document.querySelectoreAll('.sortBtns')
+    
+    
+    
 
 
 
